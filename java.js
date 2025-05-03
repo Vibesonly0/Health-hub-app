@@ -1012,36 +1012,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         alert('Meal saved successfully!');
     }
-
-
-
-
-
     
-    // ===== DASHBOARD STATS =====
-    function updateDashboardStats() {
-        // Calculate active minutes
-        const exerciseData = JSON.parse(localStorage.getItem('exerciseData')) || [];
-        const activeMinutes = exerciseData.reduce((sum, workout) => sum + (parseInt(workout.duration) || 0), 0);
-        document.getElementById('active-minutes').textContent = activeMinutes;
-        document.getElementById('active-progress').style.width = `${Math.min(100, (activeMinutes / 60) * 100)}%`;
-        
-        // Calculate calories burned
-        const caloriesBurned = exerciseData.reduce((sum, workout) => sum + (parseInt(workout.calories) || 0), 0);
-        document.getElementById('calories-burned').textContent = caloriesBurned;
-        document.getElementById('calories-progress').style.width = `${Math.min(100, (caloriesBurned / 500) * 100)}%`;
-        
-        // Calculate water intake (placeholder - would need separate tracking)
-        const waterIntake = 0; // In a real app, this would come from user input
-        document.getElementById('water-intake').textContent = waterIntake + 'L';
-        document.getElementById('water-progress').style.width = `${Math.min(100, (waterIntake / 2) * 100)}%`;
-        
-        // Calculate sleep (placeholder - would need separate tracking)
-        const sleepHours = 0; // In a real app, this would come from user input
-        document.getElementById('sleep-hours').textContent = sleepHours + 'h';
-        document.getElementById('sleep-progress').style.width = `${Math.min(100, (sleepHours / 8) * 100)}%`;
-    }
-
     // Clear all scheduled reminders when page closes
     window.addEventListener('beforeunload', () => {
         scheduledReminders.forEach(timeout => clearTimeout(timeout));
